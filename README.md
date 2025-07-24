@@ -2,7 +2,7 @@
 
 [**Derek Arreaga**](https://github.com/FabianKel)
 - **Repositorio**: https://github.com/FabianKel/COMPIS-LAB2
-> **Video de explicación**: 'https://youtu.be/CV4txFR7kLg'
+> **Video de explicación**: https://youtu.be/CV4txFR7kLg
 ---
 ## 1. ¿Por qué el archivo *program\_test\_pass.txt* sí pasa?
 

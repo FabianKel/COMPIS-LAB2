@@ -50,3 +50,22 @@ class TypeCheckListener(SimpleLangListener):
     if isinstance(left_type, (IntType, FloatType)) and isinstance(right_type, (IntType, FloatType)):
       return True
     return False
+
+  ## Extensión de gramática
+  def exitPow(self, ctx: SimpleLangParser.PowContext):
+    left_type = self.types[ctx.expr(0)]
+    right_type = self.types[ctx.expr(1)]
+
+    if isinstance(left_type, (IntType, FloatType)) and isinstance(right_type, (IntType, FloatType)):
+      self.types[ctx] = FloatType() if isinstance(left_type, FloatType) or isinstance(right_type, FloatType) else IntType()
+    else:
+      self.errors.append(f"Unsupported operand types for ^: {left_type} and {right_type}")
+
+  def exitMod(self, ctx: SimpleLangParser.ModContext):
+    left_type = self.types[ctx.expr(0)]
+    right_type = self.types[ctx.expr(1)]
+
+    if isinstance(left_type, IntType) and isinstance(right_type, IntType):
+      self.types[ctx] = IntType()
+    else:
+      self.errors.append(f"Unsupported operand types for %: {left_type} and {right_type}")
